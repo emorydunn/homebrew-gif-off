@@ -1,4 +1,4 @@
-class GitOff < Formula
+class GifOff < Formula
 desc "Small CLI for making animated GIFs from folders of images."
 homepage "https://github.com/emorydunn/homebrew-gif-off.git"
 version "0.0.1"
