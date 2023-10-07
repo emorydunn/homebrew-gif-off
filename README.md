@@ -1,4 +1,4 @@
-# homebrew-git-off
+# homebrew-gif-off
 
 Small CLI for making animated GIFs from folders of images.
 
@@ -9,6 +9,16 @@ To install `gif-off` run:
 ```shell
 brew install emorydunn/gif-off/gif-off
 ```
+
+# Why?
+
+There are lots of ways to string a series of pictures together to create a very fast slideshow, a "moving picture", if you will. You can use `ffmpeg`, if you can remember its arcane incantations. Or maybe use a non-linear editor, but that's an awful lot of overhead for a dozen frames. Some sort of Automator action or AppleScript?
+
+For me none of the options really fit, so I wanted to build something that was quick and too the point: images in, animation out. There are options where you want them, but none where you don't need them.
+
+## The Name?
+
+The utility is called `gif-off` but really it's "G!F Off", named for an impolite phrase with a similar ending one might utter after being asked to make another animated GIF on set that wasn't on the shotlist that no one's going to use anyway but the AD just thought it would be Fun.
 
 # Usage
 
