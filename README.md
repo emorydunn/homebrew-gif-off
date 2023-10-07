@@ -63,7 +63,7 @@ The supported output formats are:
 
 - GIF
 - PNG
-- MP4 (H254)
+- MP4 (H.264)
 
 Use the flags `[--gif] [--png] [--mp4]` to choose the format. By default the rendered file will be named the same as the input folder with the extension appended to it.
 
