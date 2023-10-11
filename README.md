@@ -39,7 +39,11 @@ OPTIONS:
                           Duration (in seconds) of each frame (default: 0.5)
   --loops <loops>         Number of loops (default: infinite)
   -t <t>                  Custom frame timing
-  --dry-run               Print a summary of the operation without rendering anything.
+  --dry-run               Print a summary of the operation without rendering anything
+  --save-timing/--no-save-timing
+                          Save custom timings into a sidecar file (default: --save-timing)
+  --read-timing/--no-read-timing
+                          Read custom timings from a sidecar file (default: --read-timing)
   --help                  Show help information.
 ```
 
@@ -73,6 +77,8 @@ By default all frames will be show for the duration specified with `--f`, howeve
 
 The format is `<index>:<duration>`, for example to set the duration of the second frame to 0.75 seconds: `-t 2:0.75`.
 
+By default any custom frame timing is also read from and written to a sidecar file, `.timing`, in the source folder. The format is the same, with each frame on a new line. Any timings passed in on the command line override those in the sidecar and will be saved. Use the `--no` prefix on `read-timing` and `save-timing` to not read or write the sidecar.
+
 ## Output
 
 The supported output formats are:
@@ -85,6 +91,8 @@ The supported output formats are:
 To chose the format, use a flag with the lowercase extension, e.g. `--png`. By default the rendered file will be named the same as the input folder with the extension appended to it. The name can be changed with `--name`.
 
 If you'd like to choose a different output location specify it with `--output`. When using the output option the file extension is used to determine the file type, unless a format flag is specified.
+
+Either `--name` or `--output` can be specified, not both.
 
 # Examples
 
