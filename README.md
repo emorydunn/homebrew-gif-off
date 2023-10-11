@@ -23,20 +23,24 @@ The utility is called `gif-off` but really it's "G!F Off", named for an impolite
 # Usage
 
 ```
-USAGE: gif-off <source-folder> [--output <output>] [--gif] [--png] [--mp4] [--size <size>] [--frame-duration <frame-duration>] [--loops <loops>] [-t <t> ...]
+gif-off [<options>] <source-folder>
 
 ARGUMENTS:
   <source-folder>         The source folder of images
 
 OPTIONS:
-  --output <output>       The output file
-  --gif/--png/--mp4       The output file format
-  --size <size>           The output file size (default: dimensions of the first frame)
+  -o, --output <output>   The output file
+  --name <name>           The output filename
+  --gif/--png/--mp4/--mov The output file format
+  -w, --width <width>     Width of the animation
+  -h, --height <height>   Height of the animation
+  --size <size>           Fixed size
   -f, --frame-duration <frame-duration>
                           Duration (in seconds) of each frame (default: 0.5)
   --loops <loops>         Number of loops (default: infinite)
   -t <t>                  Custom frame timing
-  -h, --help              Show help information.
+  --dry-run               Print a summary of the operation without rendering anything.
+  --help                  Show help information.
 ```
 
 ## Input
@@ -49,9 +53,11 @@ At the moment alternate orders and specifying individual frames is not supported
 
 #### Size
 
-The size defaults to the dimensions of the first frame. If you'd like to resample to images specify a new size with the `--size` option.
+The size defaults to the dimensions of the first frame. You can also specify a fixed size or to scale the images to either a given width or height.
 
-The size is given in the format `<w>x<h>`, for example `1000x1000`.
+To render to a fixed width or height use `--width` or `--height` (or both for a fixed size). A fixed size can also be given in a single option with `--size` in the format `<w>x<h>`, for example `1000x1000`.
+
+When giving a single dimension the dimensions of the file are based on the first frame. All other frames will be scaled into those dimensions. At this time cropping is not supported.
 
 #### Frame Duration
 
@@ -74,8 +80,9 @@ The supported output formats are:
 - GIF
 - PNG
 - MP4 (H.264)
+- MOV (H.264)
 
-Use the flags `[--gif] [--png] [--mp4]` to choose the format. By default the rendered file will be named the same as the input folder with the extension appended to it.
+To chose the format, use a flag with the lowercase extension, e.g. `--png`. By default the rendered file will be named the same as the input folder with the extension appended to it. The name can be changed with `--name`.
 
 If you'd like to choose a different output location specify it with `--output`. When using the output option the file extension is used to determine the file type, unless a format flag is specified.
 
@@ -96,6 +103,14 @@ gif-off ~/Pictures/Session/Output --png --size 1000x1000
 ```
 
 Result: `~/Pictures/Session/Output.png`
+
+## Create a MP4 from a folder of images, scaling to a height of 1080, named HD
+
+```shell
+gif-off ~/Pictures/Session/Output --name HD --mp4 --height 1080
+```
+
+Result: `~/Pictures/Session/HD.mp4`
 
 ## Create a MP4 from a folder of images, with custom frame timing
 
