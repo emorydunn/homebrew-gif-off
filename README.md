@@ -123,7 +123,7 @@ Result: `~/Pictures/Session/HD.mp4`
 ## Create a MP4 from a folder of images, with custom frame timing
 
 ```shell
-gif-off ~/Pictures/Session/Output --mp4 -t 5:0.75-t 6:1 -t 7:0.75
+gif-off ~/Pictures/Session/Output --mp4 -t 5:0.75 -t 6:1 -t 7:0.75
 ```
 
 Result: `~/Pictures/Session/Output.mp4`
