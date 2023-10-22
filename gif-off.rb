@@ -1,31 +1,31 @@
 class GifOff < Formula
-desc "Small CLI for making animated GIFs from folders of images."
-homepage "https://github.com/emorydunn/homebrew-gif-off.git"
-version "0.0.1"
+  desc "Small CLI for making animated GIFs from folders of images."
+  homepage "https://github.com/emorydunn/homebrew-gif-off.git"
+  version "0.0.1"
 
-on_macos do
-    if Hardware::CPU.arm?
-    url "https://github.com/emorydunn/homebrew-gif-off/releases/download/0.0.1/gif-off-arm64.zip"
-    sha256 "6e264115843e6e9f33118a25d2134341c33b165397439adc6a8a59892ebc8b4f"
+  on_macos do
+      if Hardware::CPU.arm?
+      url "https://github.com/emorydunn/homebrew-gif-off/releases/download/#{version}/gif-off-arm64.zip"
+      sha256 "fa96b7aadb17828022d1f8b2a77b6df300030571f242442d758355fbdd752292"
 
-      def install
-        bin.install "gif-off"
+        def install
+          bin.install "gif-off"
+        end
       end
-    end
-    if Hardware::CPU.intel?
-      url "https://github.com/emorydunn/homebrew-gif-off/releases/download/0.0.1/gif-off-amd64.zip"
-      sha256 "23bf9be3cea8120c87efda617cb4f7ba314ea5fe40b7577ba9913784e56858a3"
+      if Hardware::CPU.intel?
+        url "https://github.com/emorydunn/homebrew-gif-off/releases/download/#{version}/gif-off-amd64.zip"
+        sha256 "0b7443656abd8f61b5fbbe4a83adaee85adffe88e0b79fa42a260ee9d1f7698d"
 
-      def install
-        bin.install "gif-off"
+        def install
+          bin.install "gif-off"
+        end
       end
-    end
 
-end
+  end
 
-def caveats
-    <<~EOS
-        See the Github repository for more information
-    EOS
-end
+  def caveats
+      <<~EOS
+          See the Github repository for more information
+      EOS
+  end
 end
