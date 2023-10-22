@@ -6,7 +6,7 @@ class GifOff < Formula
   on_macos do
       if Hardware::CPU.arm?
       url "https://github.com/emorydunn/homebrew-gif-off/releases/download/0.0.2/gif-off-arm64.zip"
-      sha256 "fa96b7aadb17828022d1f8b2a77b6df300030571f242442d758355fbdd752292"
+      sha256 "82d2dad4fe545614ca2a15ca9fb618916420b36293632f61d34f30ff769c9d2b"
 
         def install
           bin.install "gif-off"
@@ -14,7 +14,7 @@ class GifOff < Formula
       end
       if Hardware::CPU.intel?
         url "https://github.com/emorydunn/homebrew-gif-off/releases/download/0.0.2/gif-off-amd64.zip"
-        sha256 "0b7443656abd8f61b5fbbe4a83adaee85adffe88e0b79fa42a260ee9d1f7698d"
+        sha256 "d0565f5a3b68e1b6c7d8a32050dfd12e9e7987317269553738d7108a3de5cbe8"
 
         def install
           bin.install "gif-off"
