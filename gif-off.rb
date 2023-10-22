@@ -1,7 +1,7 @@
 class GifOff < Formula
-  desc "Small CLI for making animated GIFs from folders of images."
-  homepage "https://github.com/emorydunn/homebrew-gif-off.git"
-  version "0.0.1"
+  desc "Small CLI for making animated GIFs from folders of images"
+  homepage "https://github.com/emorydunn/homebrew-gif-off"
+  version "0.0.2"
 
   on_macos do
       if Hardware::CPU.arm?
@@ -20,12 +20,5 @@ class GifOff < Formula
           bin.install "gif-off"
         end
       end
-
-  end
-
-  def caveats
-      <<~EOS
-          See the Github repository for more information
-      EOS
   end
 end
