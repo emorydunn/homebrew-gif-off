@@ -21,4 +21,8 @@ class GifOff < Formula
       end
     end
   end
+
+  test do
+    system bin/"gif-off", testpath, "--gif", "--dry-run"
+  end
 end
