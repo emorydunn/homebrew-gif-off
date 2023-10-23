@@ -75,9 +75,9 @@ How many times should the animation loop? For GIFs and PNGs this is optional, an
 
 By default all frames will be show for the duration specified with `--f`, however if you'd like some frames to play for more or less time this option can be used to give that time. The option can be used multiple times, one for each frame.
 
-The format is `<index>:<duration>`, for example to set the duration of the second frame to 0.75 seconds: `-t 2:0.75`.
+The format is `<index>:<duration>`, for example to set the duration of the second frame to 0.75 seconds: `-t 2:0.75`. The index is one-based, to set the timing for the first frame use `1:0.5`, second frame `2:1.5`, etc.
 
-By default any custom frame timing is also read from and written to a sidecar file, `.timing`, in the source folder. The format is the same, with each frame on a new line. Any timings passed in on the command line override those in the sidecar and will be saved. Use the `--no` prefix on `read-timing` and `save-timing` to not read or write the sidecar.
+By default any custom frame timing is also read from and written to a sidecar file, `.timing`, in the source folder. The format is the same, with each frame on a new line. Any timings passed in on the command line override those in the sidecar and will be saved. Use the `--no` prefix on `read-timing` and `save-timing` to neither read nor write.
 
 ## Output
 
