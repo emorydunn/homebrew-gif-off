@@ -1,12 +1,12 @@
 class GifOff < Formula
   desc "Small CLI for making animated GIFs from folders of images"
   homepage "https://github.com/emorydunn/homebrew-gif-off"
-  version "0.1.0"
+  version "0.1.1"
 
   on_macos do
     if Hardware::CPU.arm?
       url "https://github.com/emorydunn/homebrew-gif-off/releases/download/#{version}/gif-off-arm64.zip"
-      sha256 "8c97e03d55763281496403b8c7b88f97d2a4123ec6a88f7cbdfacc5b8b7891c7"
+      sha256 "c29fd1da858ea45950b10f581b94924eda1ee353177508f98257be2db8af4e27"
 
       def install
         bin.install "gif-off"
@@ -14,7 +14,7 @@ class GifOff < Formula
     end
     if Hardware::CPU.intel?
       url "https://github.com/emorydunn/homebrew-gif-off/releases/download/#{version}/gif-off-amd64.zip"
-      sha256 "c5d39cfa77055e6a5189793f068dbe3dc40a41cf51c8de243f93bdd95548afc7"
+      sha256 "0c382667eb5ba64350a3519132a274b84b29e6600ce2215550d23fa55fc9df12"
 
       def install
         bin.install "gif-off"
