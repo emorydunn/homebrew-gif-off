@@ -131,7 +131,7 @@ Result: `~/Pictures/Session/Output.mp4`
 ## Create a GIF from a folder of images, saving to the Desktop
 
 ```shell
-gif-off ~/Pictures/Session/Output --output ~/Desktop/Animation.mp4
+gif-off ~/Pictures/Session/Output --output ~/Desktop/Animation.gif
 ```
 
-Result: `~/Desktop/Animation.mp4`
+Result: `~/Desktop/Animation.gif`
