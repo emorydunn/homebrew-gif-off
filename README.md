@@ -1,4 +1,4 @@
-# homebrew-gif-off
+# gif-off
 
 Small CLI for making animated GIFs from folders of images.
 
@@ -23,7 +23,9 @@ The utility is called `gif-off` but really it's "G!F Off", named for an impolite
 # Usage
 
 ```
-gif-off [<options>] <source-folder>
+OVERVIEW: Render images in a folder
+
+USAGE: gif-off directory [<options>] <source-folder>
 
 ARGUMENTS:
   <source-folder>         The source folder of images
@@ -31,7 +33,7 @@ ARGUMENTS:
 OPTIONS:
   -o, --output <output>   The output file
   --name <name>           The output filename
-  --gif/--png/--mp4/--mov The output file format
+  -a <a>                  The output file format (values: gif, png, mp4, mov)
   -w, --width <width>     Width of the animation
   -h, --height <height>   Height of the animation
   --size <size>           Fixed size
@@ -88,26 +90,36 @@ The supported output formats are:
 - MP4 (H.264)
 - MOV (H.264)
 
-To chose the format, use a flag with the lowercase extension, e.g. `--png`. By default the rendered file will be named the same as the input folder with the extension appended to it. The name can be changed with `--name`.
+`gif-off` supports rendering multiple file types at once, specified with `-a`, which can be grouped like so `-a mp4 gif`.
 
-If you'd like to choose a different output location specify it with `--output`. When using the output option the file extension is used to determine the file type, unless a format flag is specified.
+By default the rendered output is saved _next to_ the source folder with the same name, so `input folder` becomes `input folder.gif`. The output filename can be changed with `--name`.
 
-Either `--name` or `--output` can be specified, not both.
+To save the output files to a different directory use `--output`, and all files will be saved into that folder.
+
+Additionally the type can be determined automatically if the output is a file, `-o ~/Desktop/output.mov`. Either formats or an extension can be used, not both.
 
 # Examples
 
 ## Create a GIF from a folder of images
 
 ```shell
-gif-off ~/Pictures/Session/Output --gif
+gif-off ~/Pictures/Session/Output -a gif
 ```
 
 Result: `~/Pictures/Session/Output.gif`
 
+## Create a GIF & MP4 from a folder of images
+
+```shell
+gif-off ~/Pictures/Session/Output -a gif mp4
+```
+
+Result: `~/Pictures/Session/Output.gif`, `~/Pictures/Session/Output.mp4`
+
 ## Create a PNG from a folder of images, scaling to 1000x1000
 
 ```shell
-gif-off ~/Pictures/Session/Output --png --size 1000x1000
+gif-off ~/Pictures/Session/Output -a png --size 1000x1000
 ```
 
 Result: `~/Pictures/Session/Output.png`
@@ -115,15 +127,23 @@ Result: `~/Pictures/Session/Output.png`
 ## Create a MP4 from a folder of images, scaling to a height of 1080, named HD
 
 ```shell
-gif-off ~/Pictures/Session/Output --name HD --mp4 --height 1080
+gif-off ~/Pictures/Session/Output --name HD -a mp4 --height 1080
 ```
 
 Result: `~/Pictures/Session/HD.mp4`
 
+## Create a PNG from a folder of images, scaling to a height of 1080, named HD, saved to the Desktop
+
+```shell
+gif-off ~/Pictures/Session/Output --name HD -a mp4 --height 1080 -o ~/Desktop
+```
+
+Result: `~/Desktop/HD.mp4`
+
 ## Create a MP4 from a folder of images, with custom frame timing
 
 ```shell
-gif-off ~/Pictures/Session/Output --mp4 -t 5:0.75 -t 6:1 -t 7:0.75
+gif-off ~/Pictures/Session/Output -a mp4 -t 5:0.75 -t 6:1 -t 7:0.75
 ```
 
 Result: `~/Pictures/Session/Output.mp4`
@@ -135,3 +155,29 @@ gif-off ~/Pictures/Session/Output --output ~/Desktop/Animation.gif
 ```
 
 Result: `~/Desktop/Animation.gif`
+
+# Batch Usage
+
+Batch mode is a subcommand that will read files from the standard input rather than from a folder.
+
+```
+OVERVIEW: Collect files from the standard input to render
+
+Enter files to render one line at a time. The line --render will begin rendering the images.
+
+USAGE: gif-off batch [--output <output>] [--name <name>] [-a <a> ...] [--width <width>] [--height <height>] [--size <size>] [--frame-duration <frame-duration>] [--loops <loops>]
+
+OPTIONS:
+  -o, --output <output>   The output file
+  --name <name>           The output filename
+  -a <a>                  The output file format (values: gif, png, mp4, mov)
+  -w, --width <width>     Width of the animation
+  -h, --height <height>   Height of the animation
+  --size <size>           Fixed size
+  -f, --frame-duration <frame-duration>
+                          Duration (in seconds) of each frame (default: 0.5)
+  --loops <loops>         Number of loops (default: infinite)
+  -h, --help              Show help information.
+```
+
+When using batch mode, the program will wait in a loop for file path to be given on the standard input, separated by a newline. To begin the render pass `--render` on its own line.
